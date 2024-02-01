@@ -89,4 +89,3 @@ def mask_account_number(account_number):
 # Вывод последних 5 операций
 formatted_operations = display_last_5_operations(operations_data)
 print(formatted_operations)
-
