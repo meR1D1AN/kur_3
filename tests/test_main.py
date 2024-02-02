@@ -2,7 +2,7 @@ import pytest
 import json
 
 
-@pytest.mark.parametrize("file_path", ['../src/operations.json'])
+@pytest.mark.parametrize("file_path", ['operations.json'])
 def test_state_output(file_path):
     with open(file_path) as file:
         data = json.load(file)

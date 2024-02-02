@@ -12,7 +12,7 @@ def load_operations_from_file(file_path):
 
 
 # Путь к файлу JSON
-file_path = 'operations.json'
+file_path = '../operations.json'
 # Загрузка данных операций из файла operations.json
 operations_data = load_operations_from_file(file_path)
 
