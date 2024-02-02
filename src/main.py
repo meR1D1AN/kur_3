@@ -30,7 +30,7 @@ def format_operation(operation):
     currency_name = operation_amount['currency']['name']
     masked_from_account = mask_account_number(from_account)  # Замена номера счета
     masked_to_account = mask_account_number(to_account)  # Замена номера счета
-    if description == "Открытие вклада":
+    if description == 'Открытие вклада':
         formatted_operation = (
             f"{formatted_date} {description}\n{masked_to_account}\n{amount} "
             f"{currency_name}\n")
