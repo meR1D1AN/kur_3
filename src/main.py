@@ -45,7 +45,7 @@ def display_last_5_operations(operations_data):
     """
     Функция вывода отсортированных последних 5 операций по дате, по убыванию
     """
-    formatted_operations = []
+    formatted_operations = []  # Список отформатированных операций
     # Преобразуем даты в формат datetime для сортировки
     for operation in operations_data:
         if 'date' in operation:
