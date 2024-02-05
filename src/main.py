@@ -21,6 +21,7 @@ def format_operation(operation):
     """
     Функция формирования данных по задаче
     """
+    state = operation['state']
     formatted_date = operation['date'].strftime('%d.%m.%Y')
     description = operation['description']
     from_account = operation.get('from', 'Unknown')
@@ -45,17 +46,15 @@ def display_last_5_operations(operations_data):
     """
     Функция вывода отсортированных последних 5 операций по дате, по убыванию
     """
-    formatted_operations = []  # Список отформатированных операций
-    # Преобразуем даты в формат datetime для сортировки
+    formatted_operations = []  # Список отформатированных операций
     for operation in operations_data:
         if 'date' in operation:
             operation['date'] = datetime.strptime(operation['date'], '%Y-%m-%dT%H:%M:%S.%f')
-    # Сортируем операции по дате в убывающем порядке
-    sorted_operations = sorted(operations_data, key=lambda x: x.get('date', datetime.min), reverse=True)
-    # Получаем последние 5 операций
-    last_5_operations = sorted_operations[:5]
-    # Форматируем и добавляем операции в список отображения
-    for operation in last_5_operations:
+    executed_operations = [operation for operation in operations_data if
+                           'state' in operation and operation['state'] == 'EXECUTED']
+    sorted_executed_operations = sorted(executed_operations, key=lambda x: x.get('date', datetime.min), reverse=True)
+    last_5_executed_operations = sorted_executed_operations[:5]
+    for operation in last_5_executed_operations:
         formatted_operation = format_operation(operation)
         formatted_operations.append(formatted_operation)
     display_string = '\n'.join(formatted_operations)  # Объединяем отформатированные операции разделителем
